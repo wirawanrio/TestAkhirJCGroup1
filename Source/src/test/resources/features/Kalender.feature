@@ -13,10 +13,20 @@ Feature: Kalender
     When I input kalender data with kalender unit "<kalenderUnit>"
     And I click the add button kalender
 
+    When I enter "<kalenderUnit>" in search column kalender
+    And I click the search button kalender
+    Then I should see a row "<kalenderUnit>"
+
+    And I view kalender data
+    And I input detail data kalender to tanggal "<tanggal>", tipe "<tipe>", deskripsi "<deskripsi>"
+    Then I should see detail data kalender with:
+      | Tanggal   | Tipe   | Deskripsi   |
+      | <tanggal> | <tipe> | <deskripsi> |
+
     Examples:
-      | kalenderUnit     |
-      | Kalender Unit 1  |
-      | Kalender Unit 2  |
+      | kalenderUnit    | tanggal    | tipe           | deskripsi           |
+      | Kalender Unit 1 | 09/29/2024 | Libur Nasional | Libur Lebaran Add 1 |
+      | Kalender Unit 2 | 09/29/2024 | Cuti Bersama   | Libur Lebaran Add 2 |
 
   @Positive
   Scenario Outline: Successfully searching kalender after adding

@@ -158,4 +158,12 @@ public class KalenderSteps {
         Assert.assertEquals(actualMessage, expectedMessage);
     }
 
+    @And("I input detail data kalender to tanggal {string}, tipe {string}, deskripsi {string}")
+    public void i_input_detail_data_kalender_to_tanggal_tipe_deskripsi(String tanggal, String tipe, String deskripsi) {
+        kalender.clickButtonTambahkanKalender();
+        kalender.updateTanggalCuti(tanggal, tipe, deskripsi);
+        kalender.clickTambah();
+        WaitUtils.waitForSubmitToFinish(driver);
+        WaitUtils.waitForNProgressToFinish(driver);
+    }
 }
